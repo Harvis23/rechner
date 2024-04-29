@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 784px;
+    flex-wrap: wrap;
+
+}
+
+.container {
+    border: 2px solid  black;
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+    width: 250px;
+    padding: 10px;
+}
