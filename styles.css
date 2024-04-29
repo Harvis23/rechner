@@ -12,6 +12,41 @@ body {
     display: flex;
     flex-direction: column;
     height: 380px;
-    width: 250px;
+    width: 280px;
     padding: 10px;
 }
+
+.screen {
+    height: 60px;
+    width: 255px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 10px;
+    font-weight: 700;
+    font-size: 20px;
+    background-color: rgb(224, 229, 233);
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+
+button {
+    height: 50px;
+    width: 50px;
+    margin: 5px;
+}
+
+.operator, .pos_neg, .percentage {
+    color: green;
+}
+
+
