@@ -39,17 +39,28 @@ body {
 }
 
 .operand.zero{
-    flex-grow: 1;
+    width: 119px;
 }
 
 button {
     height: 50px;
     width: 50px;
     margin: 5px;
+    font-size: 18px;
+    border-color: white;
 }
 
-.operator, .pos_neg, .percentage {
+.operator, .pos_neg, .percent {
     color: green;
+}
+
+.delete {
+    color: brown;
+}
+
+.equal {
+    background-color: green;
+    color: white;
 }
 
 
