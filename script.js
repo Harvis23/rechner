@@ -1,26 +1,9 @@
-let a = document.querySelector(".operand");
-let b = document.querySelector(".operand");
-let operator = document.querySelector(".operator");
+const div = document.querySelector(".button-container")
+div.addEventListener("click", event => {
+    const target = event.target
 
+    if (target.tagName === "BUTTON") {
+        console.log(target.innerText);
+    }
 
-function addition(a, b) {
-    display.textContent = a + b
-    
-    
-    
-
-}
-
-function display() {
-    var display = document.querySelector(".screen")
-    operandBtn.addEventListener('click', function(){
-        display.textContent = operandBtn.value;
-    })
-}
-
-
-
-function operate() {
-    
-
-}
+})
