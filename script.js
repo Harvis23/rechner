@@ -1,30 +1,40 @@
-var num1 = 0;
-var num2 = 0;
-var operator = null;
+const botones = document.querySelector(".button-container")
+const pantalla = document.querySelector(".screen")
+const clear = document.querySelector(".delete")
+const equal = document.querySelector(".equal")
 
+botones.addEventListener("click", event => {
+    if (event.target.matches('button')){
+        const key = event.target 
+        const action = key.dataset.action
+        const keyContent = key.textContent
+        const displayedNum = pantalla.textContent //current displayed number
 
-function addition(num1, num2) {
-    display.textContent = num1 + num2;
-    
-}
+        if (!action)
+        {
+            if (displayedNum === '0')
+            {
+                pantalla.textContent = keyContent
+            }
+            else
+            {
+                pantalla.textContent += keyContent
+            }
+        }
+        else if (action === 'decimal')
+        {
+            pantalla.textContent += keyContent
+        }
+        else if (action === 'add' || action === 'subtract' || action === 'multiply' || action === 'divide') 
+        {
+            
+        }
+        
+        
+    }
 
-
-
-function display(num1, num2) {
-    var  pantalla = document.querySelector(".screen")
-    pantalla.textContent = num1.value;
-    pantalla.textContent = num2.value;
-}
-
-
+})
 
 function operate(num1, num2, operator) {
-    const botones = document.querySelector(".button-container")
-    botones.addEventListener("click", event => {
-        numeros = target
-
-
-    
-    })
 
 }
