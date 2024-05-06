@@ -1,6 +1,7 @@
 let previousValue = '';
 let currentValue = '';
 let operator = '';
+let currentDisplay = '0';
 let resultDisplay = false;
 
 let botones = document.querySelector(".button-container")
@@ -12,10 +13,13 @@ let decimal = document.querySelector(".decimal")
 let operators = document.querySelectorAll(".operator")
 let numeros = document.querySelectorAll(".operand")
 
+
+
 numeros.forEach((numero => {
     numero.addEventListener("click", event => {
         handleNumber(event.target.textContent)
-        pantalla.textContent = currentValue
+        display(currentValue);
+        
     })
 }))
 
@@ -38,7 +42,7 @@ function handleOperation(op){
 }
 
 function display(value){
-    if (currentDisplay === "0" || resultDisplay) {
+    if (currentDisplay === "0" || resultDisplay === false) {
         currentDisplay = value;
     } else {
         currentDisplay += value;
@@ -50,8 +54,4 @@ function display(value){
 
 function updateDisplay() {
     pantalla.textContent = currentDisplay;
-}
-
-function calculateResult() {
-
 }
