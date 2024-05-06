@@ -1,46 +1,57 @@
-const botones = document.querySelector(".button-container")
-let num1 = '';
-let num2 = '';
-let operator = '';
-
-const pantalla = document.querySelector(".screen")
-const clear = document.querySelector(".delete")
-const equal = document.querySelector(".equal")
-const decimal = document.querySelector(".decimal")
+let previousValue = '';
 let currentValue = '';
+let operator = '';
+let resultDisplay = false;
+
+let botones = document.querySelector(".button-container")
+let pantalla = document.querySelector(".screen")
+let clear = document.querySelector(".delete")
+let equal = document.querySelector(".equal")
+let decimal = document.querySelector(".decimal")
 
 let operators = document.querySelectorAll(".operator")
+let numeros = document.querySelectorAll(".operand")
 
-botones.addEventListener("click", event => {
-    if (event.target.matches('button')){
-        const key = event.target 
-        const action = key.dataset.action
-        const keyContent = event.target.textContent
-        const displayedNum = pantalla.textContent //current displayed number
+numeros.forEach((numero => {
+    numero.addEventListener("click", event => {
+        handleNumber(event.target.textContent)
+        pantalla.textContent = currentValue
+    })
+}))
 
-        if (!action)
-        {
-            if (displayedNum === '0')
-            {
-                pantalla.textContent = keyContent
-            }
-            else
-            {
-                pantalla.textContent += keyContent
-            }
-        }
-        else if (action === 'decimal')
-        {
-            pantalla.textContent += keyContent
-        }
-        else if (action === 'add' || action === 'subtract' || action === 'multiply' || action === 'divide') 
-        {
-            
-        }
-        
-        
+operators.forEach((operator => {
+    operator.addEventListener("click", event => {
+        handleOperation(event.target.textContent)
+    })
+}))
+
+function handleNumber(num){
+    if (currentValue.length <= 5){
+        currentValue += num
     }
+}
 
-})
+function handleOperation(op){
+    operator = op;
+    previousValue = currentValue;
+    currentValue = '';
+}
 
+function display(value){
+    if (currentDisplay === "0" || resultDisplay) {
+        currentDisplay = value;
+    } else {
+        currentDisplay += value;
+    }
+    resultDisplay = false; // Flag to track wether the result was displayed
 
+    updateDisplay();
+}
+
+function updateDisplay() {
+    pantalla.textContent = currentDisplay;
+}
+
+function calculateResult() {
+
+}
