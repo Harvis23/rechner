@@ -5,7 +5,8 @@ let operator = null;
 let currentDisplay  = '0';
 let resultDisplay = false;
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() 
+{
 
     let botones = document.querySelector(".button-container")
     let clear = document.querySelector(".clear")
@@ -55,15 +56,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     }
 
-    function handleOperation(op){
-        if (operator !== null && previousValue !== '' && currentValue !== ''){
+    function handleOperation(op)
+    {
+        if (operator !== null && previousValue !== '' && currentValue !== '')
+        {
             const result = operate(previousValue, currentValue, operator);
             roundNumber(result);
             display(result);
             previousValue = result;
             currentValue = '';
             operator = op
-        }else{
+            resultDisplay = true;
+        } 
+        else if (resultDisplay === true && previousValue !== '')
+        {
+            operator = op;
+            currentDisplay = '';
+        }
+        else
+        {
             operator = op;
             previousValue = currentValue;
             currentDisplay = '';
@@ -71,17 +82,21 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    function handleEqual(){
+    function handleEqual()
+    {
         if (operator !== null && previousValue !== '' && currentValue !== ''){
             const result = operate(previousValue, currentValue, operator);
-            roundNumber(result);
-            display(result);
+            const finalResult = Math.round(result * 1000) / 1000
+            display(finalResult);
+            previousValue = finalResult;
             currentValue = '';
             operator = null
+            resultDisplay = true
         }
     }
 
-    function display(value){
+    function display(value)
+    {
         if (currentDisplay === "0" || resultDisplay) {
             currentDisplay = value;
         } else {
@@ -91,13 +106,15 @@ document.addEventListener("DOMContentLoaded", function() {
         updateDisplay();
     }
 
-    function updateDisplay(){
+    function updateDisplay()
+    {
         let pantalla = document.querySelector(".screen");
         pantalla.textContent = currentDisplay
 
     }
 
-    function operate(previousValue, currentValue, operator){
+    function operate(previousValue, currentValue, operator)
+    {
         previousValue = Number(previousValue);
         currentValue = Number(currentValue);
         switch (operator){
@@ -115,19 +132,23 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    function addition(previousValue, currentValue){
+    function addition(previousValue, currentValue)
+    {
         return previousValue + currentValue;
     }
 
-    function multiplication(previousValue, currentValue){
+    function multiplication(previousValue, currentValue)
+    {
         return previousValue * currentValue;
     }
 
-    function substraction(previousValue, currentValue){
+    function substraction(previousValue, currentValue)
+    {
         return previousValue - currentValue;
     }
 
-    function division(previousValue, currentValue){
+    function division(previousValue, currentValue)
+    {
         if (currentValue === 0){
             return 'Error'
         }
@@ -136,19 +157,15 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-
-
-    function roundNumber(num){
-        return Math.round(num * 1000) / 1000
-    }
-
-    function addDecimal(){
+    function addDecimal()
+    {
         if (!currentValue.includes(".")){
             currentValue += "."
         }
     }
 
-    function handleKeyboard(event) {
+    function handleKeyboard(event)
+    {
         const key = event.key;
         if (key >= '0' && key <= '9'){
             handleNumber(key);
